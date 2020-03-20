@@ -12,6 +12,13 @@ AInfiniteAngleCharacter::AInfiniteAngleCharacter(const FObjectInitializer& PCIP)
 {
 	
 }
+void AInfiniteAngleCharacter::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+
+
+	MovementLabCharacterMovementComp = Cast<UMovementLabCharacterMovementComp>(GetMovementComponent());
+}
 
 void AInfiniteAngleCharacter::BeginPlay()
 {
@@ -38,12 +45,14 @@ void AInfiniteAngleCharacter::SprintPressed()
 	Super::SprintPressed();
 
 
+	GetCharacterMovementComponent()->RequestSetMaxWalkSpeed(RunSpeed);
 }
 void AInfiniteAngleCharacter::SprintReleased()
 {
 	Super::SprintReleased();
 
 
+	GetCharacterMovementComponent()->RequestSetMaxWalkSpeed(WalkSpeed);
 }
 
 void AInfiniteAngleCharacter::InteractPressed()

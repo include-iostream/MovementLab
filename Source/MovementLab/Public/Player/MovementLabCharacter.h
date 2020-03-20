@@ -10,7 +10,6 @@
 
 class USpringArmComponent;
 class UCameraComponent;
-class UMovementLabCharacterMovementComp;
 
 
 
@@ -27,8 +26,6 @@ class AMovementLabCharacter : public ACharacter
 public:
 	AMovementLabCharacter(const FObjectInitializer& PCIP);
 
-	UMovementLabCharacterMovementComp* GetCharacterMovementComponent() const { return MovementLabCharacterMovementComp; }
-
 	USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
@@ -39,8 +36,6 @@ public:
 
 
 protected:
-	UMovementLabCharacterMovementComp* MovementLabCharacterMovementComp;
-
 	float BaseTurnRate;
 	float BaseLookUpRate;
 

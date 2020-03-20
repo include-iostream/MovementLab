@@ -5,10 +5,7 @@
 #include "CoreMinimal.h"
 #include "Player/MovementLabCharacter.h"
 
-#include "InfiniteAngleCharacter.generated.h"
-
-
-class UMovementLabCharacterMovementComp;
+#include "MovementLabCharacterClawShot.generated.h"
 
 
 
@@ -16,22 +13,14 @@ class UMovementLabCharacterMovementComp;
  * 
  */
 UCLASS()
-class MOVEMENTLAB_API AInfiniteAngleCharacter : public AMovementLabCharacter
+class MOVEMENTLAB_API AMovementLabCharacterClawShot : public AMovementLabCharacter
 {
 	GENERATED_BODY()
-	
-public:
-	AInfiniteAngleCharacter(const FObjectInitializer& PCIP);
 
-	UMovementLabCharacterMovementComp* GetCharacterMovementComponent() const { return MovementLabCharacterMovementComp; }
+public:
+	AMovementLabCharacterClawShot(const FObjectInitializer& PCIP);
 
 protected:
-	UMovementLabCharacterMovementComp* MovementLabCharacterMovementComp;
-
-
-	virtual void PostInitializeComponents() override;
-	virtual void BeginPlay() override;
-
 	// Action
 	virtual void JumpPressed() override;
 	virtual void JumpReleased() override;
@@ -44,4 +33,5 @@ protected:
 	virtual void MoveRight(float Value) override;
 	virtual void TurnAtRate(float Rate) override;
 	virtual void LookUpAtRate(float Rate) override;
+	
 };

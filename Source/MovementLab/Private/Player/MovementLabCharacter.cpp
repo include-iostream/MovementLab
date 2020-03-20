@@ -5,7 +5,7 @@
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
-#include "MovementLabCharacterMovementComp.h"
+#include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/KismetMathLibrary.h"
@@ -17,7 +17,7 @@
 
 
 AMovementLabCharacter::AMovementLabCharacter(const FObjectInitializer& PCIP)
-	: Super(PCIP.SetDefaultSubobjectClass<UMovementLabCharacterMovementComp>(ACharacter::CharacterMovementComponentName))
+	: Super(PCIP.SetDefaultSubobjectClass<UCharacterMovementComponent>(ACharacter::CharacterMovementComponentName))
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -64,7 +64,6 @@ void AMovementLabCharacter::PostInitializeComponents()
 	Super::PostInitializeComponents();
 
 
-	MovementLabCharacterMovementComp = Cast<UMovementLabCharacterMovementComp>(Super::GetMovementComponent());
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -100,11 +99,11 @@ void AMovementLabCharacter::JumpReleased()
 
 void AMovementLabCharacter::SprintPressed()
 {
-	GetCharacterMovementComponent()->RequestSetMaxWalkSpeed(RunSpeed);
+
 }
 void AMovementLabCharacter::SprintReleased()
 {
-	GetCharacterMovementComponent()->RequestSetMaxWalkSpeed(WalkSpeed);
+
 }
 
 void AMovementLabCharacter::InteractPressed()
